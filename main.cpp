@@ -24,14 +24,14 @@ int main()
     int num_man;
     for(int i = 0; i < O.size();  i++)
     {
-        float dist = (O[i].x - P1.x) * (O[i].x - P1.x) + (O[i].y - P1.y) * (O[i].y - P1.y) - R[i] * R[i];
-        if(dist < 0 && dist < min_dist)
+        float dist = (O[i].x - P1.x) * (O[i].x - P1.x) + (O[i].y - P1.y) * (O[i].y - P1.y) - R[i] * R[i]; // расстояние от манипулятора до цели минус радиус(sqrt не считал)
+        if(dist < 0 && dist < min_dist) // если dist отрицательный значит манипулятор может захватить цель и если dist < min_dist значит данный манипулятор ближе к цели
         {
             min_dist = dist;
             num_man = i;
         }
     }
-    if(min_dist == 0)
+    if(min_dist == 0) // если min_dist == 0, то оба манипулятора не могут захватить цель
     {
          cout << "Out Range";
     }
